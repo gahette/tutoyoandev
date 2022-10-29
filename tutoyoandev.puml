@@ -1,0 +1,83 @@
+@startuml
+'ERM definitions:
+skinparam classAttributeIconSize 0
+sprite $key [17x11/16z] bOqv3e1030CJRzPn9Fx_NWY7n4eqJ3TJs6OVa5pTpD-5tl3YyFHG-4DsqAOnWgawWp0r0KGagDuGMYMJxbMrBxzLPJ_O0G00
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define primary_key(x) <$key><b>x</b>
+!define foreign_key(x) <$key><i>x</i>
+!define unique <b>U</b>
+!define not_null <b>NN</b>
+!define foreign <b>FK</b>
+!define auto_increment <b>AI</b>
+!define integer <b>Int</b>
+!define string <b>Str</b>
+!define array <b>[]</b>
+!define text <b>Txt</b>
+!define decimal <b>Dec</b>
+!define boolean <b>Bool</b>
+!define datetime <b>Dtime</b>
+hide methods
+hide stereotypes
+
+class User
+{
++ primary_key(id) \t auto_increment not_null
++ email string 255 not_null
++ prénom string 255 not_null
++ nom string 255 not_null
++ roles array
++ password string 255 not_null
++ telephone string not_null
++ a_propos text
++ instagram string 255
+}
+
+ class Peinture
+ {
++ primary_key(id) \t integer 11 auto_increment not_null
++ nom \t string 255 not_null
++ largeur \t decimal 6, 2 not_null
++ hauteur \t decimal 6, 2 not_null
++ en_vente \t boolean not_null
++ prix \t decimal 10 ,2
++ date_realisation \t datetime
++ date \t datetime
++ description \t text not_null
++ portfolio \t boolean not_null
++ slug string \t 255 not_null
++ file \t string 255 not_null
+}
+
+class Categorie
+{
++ primary_key(id) \t integer 11 auto_increment not_null
++ nom \t string 255 not_null
++ description text not_null
++ slug \t string 255 not_null
+}
+
+class Blogpost
+{
++ primary_key(id) \t integer 11 auto_increment not_null
++ titre \t string 255 not_null
++ contenu \t text not_null
++ slug \t string 255 not_null
++ date \t datetime
+}
+
+class Commentaire
+{
++ primary_key(id) \t integer 11 auto_increment not_null
++ auteur \t string 255 not_null
++ email \t string 255 not_null
++ date \t datetime
+}
+
+
+User "1" -- "0..*" Peinture
+Peinture "0..*" - "0..*" Categorie
+Blogpost "0..*" - "1" User
+Commentaire "0..*" - "1" Blogpost
+Commentaire "0..*" --"1" Peinture
+
+@enduml
