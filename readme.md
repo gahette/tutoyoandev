@@ -39,6 +39,11 @@ symfony serve
 * Utilisation de PlantUML
 
 vous pouvez utiliser le serveur PlantUML http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
-pour visualiser le diagramme de fichier tutoyoandev.puml
+pour visualiser le diagramme dans le fichier "tutoyoandev.puml"
 mais là pas de surprise c'est le même que YoanDev
 
+## Lancer des tests
+
+```bash
+php bin/phpunit --testdox
+```
