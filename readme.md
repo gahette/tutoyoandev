@@ -34,7 +34,7 @@ symfony serve
 ```
 
 
-### Diagramme de classe
+## Diagramme de classe
 
 * Utilisation de PlantUML
 
